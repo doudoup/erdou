@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>二豆的主页</title>
-<!--     <script src="https://sdk.appadhoc.com/ab.plus.js" charset="utf-8"></script> -->
-    <script src="./ab.plus.js" charset="utf-8"></script>
+    <script src="https://sdk.appadhoc.com/ab.plus.js" charset="utf-8"></script>
+<!--     <script src="./ab.plus.js" charset="utf-8"></script> -->
     <script>
         adhoc('init', {
-          appKey: 'ADHOC_6e1a2388-2981-4bea-acd8-5a13765ac50d'
+//           appKey: 'ADHOC_6e1a2388-2981-4bea-acd8-5a13765ac50d'
+            
+            appKey: 'ADHOC_63603df4-7a2d-47bb-a948-433546d6545c' // test 10
         })
         function applyFlags(flags) {
             if (flags.get('testurl') === 0) {
@@ -21,7 +23,7 @@
             console.log(adhoc('getCurClientId'));
             console.log(adhoc('getMatchedExpIds'));
         }
-        adhoc('getFlags', applyFlags);
+//         adhoc('getFlags', applyFlags);
     </script>
 <!--     <script src="https://cdn.optimizely.com/js/13170380126.js"></script> -->
 </head>
@@ -31,7 +33,7 @@
     <button onclick="myFunction()" id="butt">点我</button>
     <script>
         function myFunction(){
-            adhoc('track', 'A', 1);
+//             adhoc('track', 'A', 1);
             var para = document.createElement("img");
             para.setAttribute("src","http://img.yishouapp.com/2018/09/04/5b8e63a90fe50.jpg?imageView2/2/w/600/h/1334/format/jpg/q/75/")
             var element = document.getElementsByTagName('body')[0];
