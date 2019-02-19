@@ -29,17 +29,19 @@
 <!--     <script src="https://cdn.optimizely.com/js/13170380126.js"></script> -->
 </head>
 <body>
-    <p>二豆不要二豆</p>
-    <img src="http://img.yishouapp.com/2018/09/12/5b98ae4a3a52a.JPG?imageView2/2/w/600/h/1334/format/jpg/q/75/">
-    <button onclick="myFunction()" id="butt">点我</button>
-    <script>
-        function myFunction(){
-            adhoc('track', 'A', 1);
-            var para = document.createElement("img");
-            para.setAttribute("src","http://img.yishouapp.com/2018/09/04/5b8e63a90fe50.jpg?imageView2/2/w/600/h/1334/format/jpg/q/75/")
-            var element = document.getElementsByTagName('body')[0];
-            element.appendChild(para);
-        }
-    </script>
+    <div  class="paper container">
+        <p>二豆不要二豆</p>
+        <img src="http://img.yishouapp.com/2018/09/12/5b98ae4a3a52a.JPG?imageView2/2/w/600/h/1334/format/jpg/q/75/">
+        <button onclick="myFunction()" id="butt">点我</button>
+        <script>
+            function myFunction(){
+                adhoc('track', 'A', 1);
+                var para = document.createElement("img");
+                para.setAttribute("src","http://img.yishouapp.com/2018/09/04/5b8e63a90fe50.jpg?imageView2/2/w/600/h/1334/format/jpg/q/75/")
+                var element = document.getElementsByTagName('body')[0];
+                element.appendChild(para);
+            }
+        </script>
+    </div>
 </body>
 </html>
