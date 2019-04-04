@@ -5,10 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
+    <script src="https://sdk.appadhoc.com/ab.plus.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        adhoc('init', {
+            appKey: 'ADHOC_7ae25530-2e39-4763-a8f5-fd86bd56cb7d', // test 11
+        })
+        function applyFlags(flags) {
+            if (flags.get('price') === 0) {
+                console.log('原始版本');
+            }
+            if (flags.get('price') === 1) {
+                console.log('试验版本1');
+            }
+            if (flags.get('price') === 2) {
+                console.log('试验版本2');
+            }
+            console.log(adhoc('getCurClientId'));
+            console.log(adhoc('getMatchedExpIds'));
+        }
+        adhoc('getFlags', applyFlags);
+        
+    </script>
 
 </head>
 <body>
-    <div>AAAAAAAAAAA</div>
+    <div onclick="adhoc('track', 'A', 1)">AAAAAAAAAAA</div>
 </body>
 </html>
