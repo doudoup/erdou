@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://sdk.appadhoc.com/ab.plus.js" charset="utf-8"></script>
+
+    
+    <script type="text/javascript">
+
+        function changeSrc(eId, value) {
+            var ele = document.getElementById('ab-'+eId);
+            ele.src = value;
+        }
+
+        function changeForm(eId, value){
+            var ele = document.getElementById('ab-'+eId);
+            ele.style.display ="none";
+
+            var newele = document.getElementById(value);
+            newele.style.display ="block";
+
+        }
+
+        function sortNumber(a, b) {
+            return a.num - b.num
+        }
+
+        function changeSequence(eId, value) {
+            var eles = document.getElementById('body').children;
+            var showEles = [];
+
+            for (i = 0; i < eles.length; i++) {
+                if(eles[i].style.display != 'none' && eles[i].nodeName != 'SCRIPT'){
+                    showEles.push(eles[i]);
+                }
+            }
+
+            var data = [];
+
+            if( showEles.length != value.length ){
+                return;
+            }
+
+            for (i = 0; i < showEles.length; i++) {
+                data[i] = {ele: showEles[i],num: value[i]}
+            }
+
+            data.sort(sortNumber)
+
+            var body = document.getElementById('body');
+            for (i = 0; i < data.length; i++) {
+                body.appendChild(data[i].ele);
+            }
+
+
+        }
+        adhoc('init', {
+            appKey: 'ADHOC_e6429340-17bb-445c-b460-9e178351b16f', // appkey要改
+        })
+
+        function applyFlags(flags) {
+
+            var versionData = flags.get('price'); // 指标名称要改
+
+            versionData = '{ "banner":"./image/banner02.png", "content": "./image/content02.png", "form": "ab-form-b", "sequence": [1,2,3] }'; // 假数据, 之后要删除
+            // versionData = '{ "banner":"./image/banner02.png", "content": "./image/content02.png", "form": "ab-form-b", "sequence": [2,1,3] }'; // 假数据, 之后要删除
+
+            versionData = JSON.parse(versionData);
+
+            for(var d in versionData){
+
+                switch(d){
+                case 'form':
+                    changeForm( d, versionData[d] );
+                    break;
+                case 'sequence':
+                    changeSequence( d, versionData[d] );
+                    break;
+                default:
+                    changeSrc( d, versionData[d] );
+                }
+            }
+        }
+
+        adhoc('getFlags', applyFlags);
+
+
+    </script>
+
+<style type="text/css">
+    html {
+        font-size: 62.5%;
+    }
+    body {
+        padding: 0;
+        margin: 0;
+        font-size: 5.0rem;
+    }
+    img {
+        width: 100%;
+    }
+</style>
+
+
+</head>
+<body id="body">
+    <img id="ab-banner" src="./image/banner01.png">
+    <img id="ab-content" src="./image/content01.png">
+
+    <div id="ab-form">表单:原始版本</div>
+    <div id="ab-form-a" style="display: none">表单:版本A</div>
+    <div id="ab-form-b" style="display: none">表单:版本B</div>
+    
+</body>
+</html>
