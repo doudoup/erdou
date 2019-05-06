@@ -12,7 +12,7 @@
     <script type="text/javascript">
 
         function changeSrc(eId, value) {
-            if(value == 'default'){
+            if(value == 'default' || value == 0){
                 return;
             }
             var ele = document.getElementById('ab-'+eId);
@@ -68,14 +68,14 @@
         }
         
         adhoc('init', {
-            appKey: 'ADHOC_e6429340-17bb-445c-b460-9e178351b16f', // appkey要改
+            appKey: 'ADHOC_8046bdee-9195-4a54-bf10-4db57e168f1a', // appkey要改
         })
 
         function applyFlags(flags) {
 
-            var versionData = flags.get('price'); // 指标名称要改
+            var versionData = flags.get('9cc769dba9a3a846'); // 指标名称要改
 
-            versionData = '{ "banner":"default", "content": "./image/content02.png", "form": "ab-form-b", "sequence": [1,2,3] }'; // 假数据, 之后要删除
+            // versionData = '{ "banner":"default", "content": "./image/content02.png", "form": "ab-form-b", "sequence": [1,2,3] }'; // 假数据, 之后要删除
             // versionData = '{ "banner":"./image/banner02.png", "content": "./image/content02.png", "form": "ab-form-b", "sequence": [1,2,3] }'; // 假数据, 之后要删除
             // versionData = '{ "banner":"./image/banner02.png", "content": "./image/content02.png", "form": "ab-form-b", "sequence": [2,1,3] }'; // 假数据, 之后要删除
 
@@ -118,12 +118,15 @@
 
 </head>
 <body id="body">
+    <img id="ab-version" src="./image/content01.png">
+
     <img id="ab-banner" src="./image/banner01.png">
     <img id="ab-content" src="./image/content01.png">
 
     <div id="ab-form">表单:原始版本</div>
     <div id="ab-form-a" style="display: none">表单:版本A</div>
     <div id="ab-form-b" style="display: none">表单:版本B</div>
+
     
 </body>
 </html>
